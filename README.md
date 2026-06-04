@@ -1,64 +1,82 @@
-# KickMod
+# 🛡️ KickMod
 
-**EN:** Free Chrome extension for moderator statistics (bans, timeouts, unbans) and chat activity on [Kick.com](https://kick.com) channels. No payment or login required.
+A lightweight Chrome extension to track moderator bans, timeouts, and chat activity on [Kick.com](https://kick.com) in real time, with a live moderation log, session summary, activity charts, and a built-in HLS player.
 
-**RU:** Бесплатное расширение Chrome для статистики модераторов (баны, тайм-ауты, разбаны) и активности чата на каналах [Kick.com](https://kick.com). Без оплаты и без входа в аккаунт.
+---
 
-**Privacy / Конфиденциальность:** [PRIVACY_POLICY.md](./PRIVACY_POLICY.md)  
-**Store listing texts / Тексты для магазина:** [docs/STORE_AND_GITHUB.md](./docs/STORE_AND_GITHUB.md)
+## ✨ Features
 
-## Features / Возможности
+* 🛡️ **Live moderation log** — tracks bans and timeouts as they appear in chat.
+* 📊 **Session summary** — shows total actions, active moderators, average activity, top moderator, and live chat message count.
+* 🔍 **Smart search & sorting** — search by nickname, moderator, or last message text; sort by newest or oldest.
+* 📈 **Activity charts** — visualize moderation actions and chat messages per minute.
+* 👤 **Moderator leaderboard** — see the most active moderators and compare their activity.
+* 🎬 **Built-in HLS player** — watch the live stream directly inside the extension.
+* 🌍 **Language support** — full interface in Russian (RU) and English (EN).
 
-- Popup: enter streamer username → open statistics page
-- Live action log (bans / timeouts) via Kick chat WebSocket (Pusher)
-- Session summary, activity chart, top moderators, optional top words
-- Built-in HLS live player, RU/EN UI, browser timezone for dates
-- Search in the log (nickname, moderator, last message)
+---
 
-## Install (developer mode) / Установка
+## 🛠️ Installation
 
-1. Open `chrome://extensions`
-2. Enable **Developer mode** / **Режим разработчика**
-3. **Load unpacked** / **Загрузить распакованное** → select this folder
-4. Open the extension popup, enter a channel name, open statistics
+### ✅ Method 1. Chrome Web Store
+1. Open the extension page on the Chrome Web Store.
+2. Click **Add to Chrome**.
+3. Confirm installation.
 
-## Project structure
+> [!NOTE]
+> This is the easiest method, but updates may appear with a slight delay depending on Chrome Web Store review.
 
+### ⚡ Method 2. Manual install
+1. Open `chrome://extensions/` in your browser.
+2. Enable **Developer mode** in the top-right corner.
+3. Click **Load unpacked**.
+4. Select the `KickMod` folder.
+
+> [!IMPORTANT]
+> This method is useful for testing and faster local updates.
+
+---
+
+## 💡 Usage
+
+### Method 1. Via the popup
+1. Click the extension icon in the browser toolbar.
+2. Enter the streamer’s name using Latin characters only.
+3. Open the statistics page — data collection starts immediately.
+
+### Method 2. Direct link
+
+```text
+chrome-extension://<YOUR_EXTENSION_ID>/pages/kick-statistics.html?channel=STREAMER_NAME
 ```
-KickMod/
-  manifest.json
-  PRIVACY_POLICY.md
-  _locales/          # Chrome Web Store (en, ru)
-  popup/
-  background/        # Service worker + WebSocket tracker
-  lib/               # Moderation parser, Kick API
-  pages/             # kick-statistics.html (main UI)
-  icons/
-  docs/
-```
 
-## Permissions
+> [!IMPORTANT]
+> Replace `STREAMER_NAME` with the streamer’s channel name and `<YOUR_EXTENSION_ID>` with your extension’s unique ID from `chrome://extensions/`.
 
-| Permission | Why |
-|------------|-----|
-| `storage` | UI language only (`kickmod:lang`) |
-| `tabs` | Open/focus statistics page |
-| `host_permissions` | Kick.com API, Pusher chat, HLS CDN |
+---
 
-Session moderation data is kept **in memory** only (not persisted to `chrome.storage`).
+## 🔑 API Reference
 
-## Remote code
+> [!NOTE]
+> KickMod uses public Kick endpoints and Kick’s public chat WebSocket. No API keys, registration, or Kick login are required.
 
-HLS.js is loaded from `cdn.jsdelivr.net` on the statistics page for the embedded player (declared in Chrome Web Store as remote code).
+---
 
-## Chrome Web Store package
+## 🔒 Privacy
 
-Include only extension files. Exclude from the ZIP: `.git`, `docs/` (optional), `scripts/`, `*.zip`, `.gitignore`, unused legacy files if removed.
+> [!IMPORTANT]
+> KickMod does not send user data to developer servers. Session statistics are stored temporarily in browser memory and reset after browser restart. Only the UI language preference is saved locally in `chrome.storage`.
 
-Minimum required paths:
+---
 
-- `manifest.json`, `_locales/`, `popup/`, `background/`, `lib/`, `pages/kick-statistics.*`, `icons/icon*.png`, `icons/verify.png`, `icons/github.png`
+## 📦 Compatibility
 
-## License
+* Chrome and Chromium-based browsers
+* Kick.com channels
+* Russian and English UI
 
-Specify your license in the repository before publishing (e.g. MIT). Add a `LICENSE` file if you choose one.
+---
+
+## ⭐ Support
+
+If you find KickMod useful, please leave a rating and review on the Chrome Web Store.
