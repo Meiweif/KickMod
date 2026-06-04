@@ -1,0 +1,14 @@
+{
+  "extName": {
+    "message": "KickMod — Статистика модераторов",
+    "description": "Название расширения"
+  },
+  "extDescription": {
+    "message": "Статистика банов, тайм-аутов и активности модераторов на каналах Kick.com.",
+    "description": "Описание расширения"
+  },
+  "extShortName": {
+    "message": "KickMod",
+    "description": "Короткое имя"
+  }
+}

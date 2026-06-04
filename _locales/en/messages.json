@@ -1,0 +1,14 @@
+{
+  "extName": {
+    "message": "KickMod — Moderator Stats",
+    "description": "Extension name"
+  },
+  "extDescription": {
+    "message": "Track moderator bans, timeouts and activity on any Kick.com channel.",
+    "description": "Extension description"
+  },
+  "extShortName": {
+    "message": "KickMod",
+    "description": "Short name"
+  }
+}

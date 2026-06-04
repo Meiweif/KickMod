@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>KickMod</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <div class="popup">
+    <header class="popup-header">
+      <div class="logo" aria-hidden="true"></div>
+      <div>
+        <h1 id="popupTitle">KickMod</h1>
+        <p id="popupSubtitle"></p>
+      </div>
+    </header>
+    <label class="field" for="channelInput">
+      <span id="channelLabel"></span>
+      <input id="channelInput" type="text" spellcheck="false" autocomplete="off" placeholder="CHANNEL_NAME">
+    </label>
+    <button id="openBtn" type="button" class="primary-btn"></button>
+    <p id="errorText" class="error hidden" role="alert"></p>
+    <div class="lang-row">
+      <button type="button" class="lang-btn" data-lang="ru">RU</button>
+      <button type="button" class="lang-btn" data-lang="en">EN</button>
+    </div>
+  </div>
+  <script src="popup.js"></script>
+</body>
+</html>

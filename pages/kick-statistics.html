@@ -1,0 +1,152 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>KickMod Statistics</title>
+  <link rel="stylesheet" href="kick-statistics.css">
+</head>
+<body>
+  <div class="app">
+    <header class="top-bar">
+      <div class="brand">
+        <span class="brand-icon" aria-hidden="true"></span>
+        <div>
+          <h1 id="pageTitle">KickMod</h1>
+          <p id="channelLine" class="channel-line">—</p>
+        </div>
+      </div>
+      <div class="top-actions">
+        <span id="connectionBadge" class="badge badge-warn">—</span>
+        <div class="lang-switch">
+          <button type="button" class="lang-btn" data-lang="ru">RU</button>
+          <button type="button" class="lang-btn" data-lang="en">EN</button>
+        </div>
+      </div>
+    </header>
+
+    <section class="stats-grid" id="statsGrid">
+      <article class="stat-card stat-card-wide">
+        <div class="stat-card-head">
+          <span id="statTotalLabel">—</span>
+          <div class="toggle" role="group" aria-label="Action type">
+            <button type="button" id="toggleBans" class="toggle-btn active">—</button>
+            <button type="button" id="toggleTimeouts" class="toggle-btn">—</button>
+          </div>
+        </div>
+        <b id="statTotalValue" class="stat-value">0</b>
+        <span id="statTotalHint" class="stat-hint">—</span>
+      </article>
+      <article class="stat-card">
+        <span id="statModsLabel">—</span>
+        <b id="statModsValue" class="stat-value">0</b>
+        <span id="statModsHint" class="stat-hint">—</span>
+      </article>
+      <article class="stat-card">
+        <span id="statAvgLabel">—</span>
+        <b id="statAvgValue" class="stat-value">0</b>
+        <span id="statAvgHint" class="stat-hint">—</span>
+      </article>
+      <article class="stat-card">
+        <span id="statBestLabel">—</span>
+        <b id="statBestValue" class="stat-value">0</b>
+        <span id="statBestHint" class="stat-hint">—</span>
+      </article>
+    </section>
+
+    <section class="panel chart-panel">
+      <div class="chart-head">
+        <h2 id="chartTitle" class="panel-title">—</h2>
+        <div id="chartLegend" class="chart-legend-multi"></div>
+      </div>
+      <div class="chart-canvas-wrap">
+        <canvas id="activityChart" width="1200" height="300" aria-label="Session activity chart"></canvas>
+        <div id="chartTooltip" class="chart-tooltip hidden" role="tooltip"></div>
+        <div id="chartWordsBox" class="chart-words-box hidden" aria-hidden="true"></div>
+        <div class="chart-watermark" aria-hidden="true">
+          <span class="chart-watermark-icon"></span>
+          <span class="chart-watermark-text">Meiweif</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="panel moderators-panel">
+      <h2 id="modsChartTitle" class="panel-title">—</h2>
+      <div id="modsChartLegend" class="chart-legend"></div>
+      <div id="modsBars" class="mods-bars"></div>
+    </section>
+
+    <section class="panel log-panel">
+      <div class="log-header">
+        <h2 id="logTitle" class="panel-title">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.5"/><path d="M12 7v5l3 2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+          <span id="logTitleText">—</span>
+        </h2>
+        <button type="button" id="copyNicknamesBtn" class="ghost-btn hidden">—</button>
+      </div>
+      <div class="log-toolbar">
+        <label class="search-field">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="11" cy="11" r="7" stroke="currentColor" stroke-width="1.5"/><path d="M20 20l-4.35-4.35" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+          <input id="searchInput" type="search" autocomplete="off" placeholder="">
+        </label>
+        <div id="sortDropdown" class="custom-select" data-value="new"></div>
+      </div>
+      <div class="table-wrap">
+        <table class="log-table">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th id="thDate">—</th>
+              <th id="thNickname">—</th>
+              <th id="thModerator">—</th>
+              <th id="thMessage">—</th>
+              <th id="thDuration">—</th>
+              <th id="thStatus">—</th>
+            </tr>
+          </thead>
+          <tbody id="logBody"></tbody>
+        </table>
+      </div>
+      <p id="emptyLog" class="empty hidden">—</p>
+    </section>
+  </div>
+
+  <div id="playerToast" class="player-toast hidden" role="status"></div>
+
+  <aside id="playerDock" class="player-dock hidden" aria-hidden="true">
+    <div id="playerDockDrag" class="player-dock-head">
+      <span id="playerDockTitle">—</span>
+      <button type="button" id="closePlayerBtn" class="player-close" aria-label="Close">×</button>
+    </div>
+    <video id="playerVideo" controls playsinline></video>
+    <p id="playerError" class="player-error hidden"></p>
+  </aside>
+
+  <footer class="bottom-bar">
+    <div class="bottom-left">
+      <p id="sessionMessagesLine">—</p>
+      <p id="sessionTimeLine">—</p>
+    </div>
+    <div class="bottom-right">
+      <button type="button" id="switchChannelBtn" class="footer-btn">—</button>
+      <button type="button" id="openPlayerBtn" class="footer-btn primary">—</button>
+    </div>
+  </footer>
+
+  <div id="switchModal" class="modal hidden" aria-hidden="true">
+    <div class="modal-backdrop" data-close="1"></div>
+    <div class="modal-card">
+      <h3 id="switchModalTitle">—</h3>
+      <input id="switchChannelInput" type="text" class="modal-input" spellcheck="false" autocomplete="off">
+      <p id="switchChannelError" class="modal-error hidden"></p>
+      <div class="modal-actions">
+        <button type="button" id="switchCancelBtn" class="footer-btn">—</button>
+        <button type="button" id="switchConfirmBtn" class="footer-btn primary">—</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/hls.js@1.5.7/dist/hls.min.js"></script>
+  <script src="kick-statistics.js"></script>
+</body>
+</html>
