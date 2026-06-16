@@ -19,7 +19,7 @@ A lightweight Chrome extension to track moderator bans, timeouts, and chat activ
 ## 🛠️ Installation
 
 ### ✅ Method 1. Chrome Web Store
-1. Open the extension page on the Chrome Web Store.
+1. Open the extension page on the [Chrome Web Store](https://chromewebstore.google.com/detail/kickmod-%E2%80%94-moderator-stats/eadlcgcahiogkkljakemhpencbenlebj).
 2. Click **Add to Chrome**.
 3. Confirm installation.
 
